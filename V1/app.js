@@ -210,12 +210,20 @@ const humanData = (function getData() {
             const div = document.createElement("div");
             //Give element class name
             div.classList.add("grid-item");
-            //Create innerHTML for div
-            div.innerHTML = `
+            //Create innerHTML for div and check if dino or pigeon
+            if(item.species === "Pigeon") {
+                div.innerHTML = `
+                <img src=${item.img} alt="Picture">
+                <h3>${item.species ? item.species : item.name}</h3>
+                <p>${item.fact}</p>
+            `;
+            } else {
+                div.innerHTML = `
                 <img src=${item.img} alt="Picture">
                 <h3>${item.species ? item.species : item.name}</h3>
                 <p>${item.species ? randomFact : ``}</p>
             `;
+            }
 
             //Append to the DOM
             grid.appendChild(div);
